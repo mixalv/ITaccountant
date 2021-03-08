@@ -3,6 +3,6 @@ Flask
 Flask-Session
 requests
 werkzeug
-dateutil
+python-dateutil
 gunicorn
 psycopg2
