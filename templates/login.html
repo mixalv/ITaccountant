@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+login
+{% endblock %}
+{% block main %}
+<form action="/login" method="post" class="login">
+
+        <input name="name" placeholder="Enter username" type="text" class="loginput">
+        <input name="password" placeholder="Enter your password" type="password" class="loginput">
+        <input type="submit" value="Log in" style="width:10%; height:10%; border-radius:5px;font-size:100%">
+        <button style="width:10%; height:10%; border-radius:5px;font-size:100%;" onclick="window.location.href='/register'" type="button"><a href="/register" style="text-decoration: none;">Register</a></button>
+</form>
+
+
+
+
+{% endblock %}

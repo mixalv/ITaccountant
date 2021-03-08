@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link href="/static/style.css" rel="stylesheet">
+     <link href="/static/favicon.ico" rel="icon">
+    <title>ITaccountant: {% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="/static/img/background.jpg" style="width:100%;height:100%;object-fit:fill">
+        </div>
+        <nav>
+            {% if session.user_id %}
+            <div class="nav">
+                <a href="/">Home</a>
+                <a href="/report">Report</a>
+                <a href="/transactions">Transactions</a>
+                <a href="/ref">Reference</a>
+                <a href="/logout" style="float:right">Log out</a>
+                <a href="/changepassword" style="float:right">Change password</a>
+                <p style="float:right">Hello, {{ name }}</p>
+
+            </div>
+            {% else %}
+            <ul class="nav">
+                <li style="float: right"><a href="/login">Log in</a></li>
+                <li style="float: right"><a href="/register">Register</a></li>
+            </ul>
+
+            {% endif %}
+        </nav>
+    </header>
+    {% if get_flashed_messages() %}
+    <div class="flash">
+
+            {{ get_flashed_messages()[0] }}
+
+    </div>
+    {% endif %}
+    <main>
+    {% block main %}
+    <p>test</p>
+     <p>test</p>
+      <p>test</p>
+       <p>test</p>
+    {% endblock %}
+    </main>
+
+    <footer style="text-align: center">
+        <p>Copiright &copy; 2021 This app is made by <a href="mailto:mixalv@gmail.com">Mykhailo Khomenko</a> as a final project for <a href="https://cs50.harvard.edu/x/2021/" target="_blank">CS50x</a></p>
+    </footer>
+
+</body>
+</html>

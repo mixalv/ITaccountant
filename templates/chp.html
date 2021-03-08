@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+change password
+{% endblock %}
+{% block main %}
+
+<form action="/changepassword" method="post" class="login">
+
+        <input name="opass" placeholder="Current password" type="password" class="loginput">
+        <input name="npass" placeholder="New password" type="password" class="loginput">
+        <input name="cpass" placeholder="Confirm new password" type="password" class="loginput">
+        <input type="submit" value="Submit" style="width:10%; height:10%; border-radius:5px;font-size:100%">
+</form>
+{% endblock %}

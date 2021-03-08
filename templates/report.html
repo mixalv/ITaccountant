@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}
+report
+{% endblock %}
+{% block main %}
+
+<form action="/report" method="post" class="tran">
+        <label for="start" style="grid-column: 1; grid-row: 1;" class="trans">Start date</label><br>
+        <input type="date" name="start" style="grid-column: 1; grid-row: 2;" class="tri">
+        <label for="finish" style="grid-column: 2; grid-row: 1;" class="trans">Finish date:</label><br>
+        <input type="date" name="finish" style="grid-column: 2; grid-row: 2;" class="tri">
+        <button type="submit" style="grid-column: 3; grid-row: 2;font-size: 80%;width: 30% ">Generate report</button>
+        {% if uah and tax%}
+
+        <p style="grid-column: 1; grid-row: 3;" class="trans">Gross income for period {{ uah }} &#8372; </p>
+        <p style="grid-column: 2; grid-row: 3;" class="trans">Tax needs to be paid for period {{ tax }} &#8372;</p>
+        <p style="grid-column: 3; grid-row: 3;" class="trans">USC needs to be paid for period {{ usc }} &#8372;</p>
+        <p style="grid-column: 2; grid-row: 4;" class="trans">Net income for period {{ net }} &#8372;</p>
+        {% else %}
+
+        {% endif %}
+
+</form>
+
+{% endblock %}
