@@ -2,7 +2,7 @@ cs50
 Flask
 Flask-Session
 requests
-functools
+
 werkzeug.security
 tempfile
 datetime
