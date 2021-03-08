@@ -8,11 +8,6 @@ import requests
 from tempfile import mkdtemp
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
-# Configure application
-app = Flask(__name__)
-
-# Ensure templates are auto-reloaded
-app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Configure application
 app = Flask(__name__)
