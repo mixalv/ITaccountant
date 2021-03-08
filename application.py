@@ -273,3 +273,6 @@ def report():
 @login_required
 def ref():
     return render_template ("ref.html")
+
+if __name__ == '__main__':
+    app.run(threaded=True, port=5000)
