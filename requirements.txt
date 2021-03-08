@@ -3,7 +3,7 @@ Flask
 Flask-Session
 requests
 
-werkzeug.security
+werkzeug
 tempfile
 datetime
 dateutil.relativedelta
