@@ -35,7 +35,7 @@ def after_request(response):
     return response
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///accountant.db")
+db = SQL(os.getenv("postgres://bvthxdfcirorlu:f039ce5b9fa197ae3e3c3558b9ad3e058559b65d08aed45f228a3cf0b1c0b6cc@ec2-54-216-185-51.eu-west-1.compute.amazonaws.com:5432/db8a02kbb88ug0"))
 
 # Login required decorator
 def login_required(f):
