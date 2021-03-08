@@ -3,6 +3,6 @@ Flask
 Flask-Session
 requests
 werkzeug
-dateutil.relativedelta
+dateutil
 gunicorn
 psycopg2
