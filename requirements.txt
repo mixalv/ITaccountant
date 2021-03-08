@@ -2,9 +2,7 @@ cs50
 Flask
 Flask-Session
 requests
-
 werkzeug
-tempfile
 datetime
 dateutil.relativedelta
 gunicorn
