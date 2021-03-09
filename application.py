@@ -230,7 +230,11 @@ def report():
         finish = request.form.get("finish")
         id = session.get("user_id")
         #selec the transactions sum
-        uah = db.execute("SELECT SUM(uah) as sum FROM transactions WHERE user_id = ? AND date BETWEEN ? AND ?", id, start, finish)
+        if not start or not finish:
+            flash("Будь ласка виберіть дату")
+            return redirect("/report")
+        else:
+            uah = db.execute("SELECT SUM(uah) as sum FROM transactions WHERE user_id = ? AND date BETWEEN ? AND ?", id, start, finish)
         #check if there are transactions
         if len(uah) > 0 and uah[0]["sum"] != None:
             #count the sum
