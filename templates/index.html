@@ -3,18 +3,18 @@
 home
 {% endblock %}
 {% block main %}
-<h1 style="text-align: center">Submit a transaction:</h1>
+<h1 style="text-align: center">Зареєструвати дохід:</h1>
 <form action="/" method="post" class="tran">
-        <label for="sum" style="grid-column: 1; grid-row: 1;" class="trans">Sum:</label><br>
+        <label for="sum" style="grid-column: 1; grid-row: 1;" class="trans">Сума:</label><br>
         <input type="number" min="1" name="sum" style="grid-column: 1; grid-row: 2;" class="tri">
-        <label for="currency" style="grid-column: 2; grid-row: 1;" class="trans">Currency:</label><br>
+        <label for="currency" style="grid-column: 2; grid-row: 1;" class="trans">Валюта:</label><br>
         <select name="currency" style="grid-column: 2; grid-row: 2;" class="tri">
             <option selected value="UAH">&nbsp UAH</option>
             <option value="USD">&nbsp USD</option>
             <option value="EUR">&nbsp EUR</option>
         </select>
-        <label for="date" style="grid-column: 3; grid-row: 1;" class="trans">Date:</label><br>
+        <label for="date" style="grid-column: 3; grid-row: 1;" class="trans">Дата:</label><br>
         <input type="date" name="date" style="grid-column: 3; grid-row: 2;" class="tri">
-   <button type="submit" style="grid-column: 2; grid-row: 3; align-self: end; ">Submit</button>
+   <button type="submit" style="grid-column: 2; grid-row: 3; align-self: end; ">Подати</button>
 </form>
 {% endblock %}

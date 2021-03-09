@@ -16,19 +16,19 @@
         <nav>
             {% if session.user_id %}
             <div class="nav">
-                <a href="/">Home</a>
-                <a href="/report">Report</a>
-                <a href="/transactions">Transactions</a>
-                <a href="/ref">Reference</a>
-                <a href="/logout" style="float:right">Log out</a>
-                <a href="/changepassword" style="float:right">Change password</a>
-                <p style="float:right">Hello, {{ name }}</p>
+                <a href="/">Головна</a>
+                <a href="/report">Звіт</a>
+                <a href="/transactions">Транзакції</a>
+                <a href="/ref">Довідка</a>
+                <a href="/logout" style="float:right">Вийти</a>
+                <a href="/changepassword" style="float:right">Змінити пароль</a>
+                <p style="float:right">Вітаю, {{ name }}</p>
 
             </div>
             {% else %}
             <ul class="nav">
-                <li style="float: right"><a href="/login">Log in</a></li>
-                <li style="float: right"><a href="/register">Register</a></li>
+                <li style="float: right"><a href="/login">Авторизуватися</a></li>
+                <li style="float: right"><a href="/register">Зареєструватися</a></li>
             </ul>
 
             {% endif %}

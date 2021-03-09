@@ -95,12 +95,12 @@ def index():
                 rate = get_rate(currency, datetime.strftime(date, "%Y%m%d"))
             uah = round(float(sum)*rate, 2)
             db.execute("INSERT INTO transactions (user_id, sum, currency, rate, uah, date) VALUES (?, ?, ?, ?, ?, ?)", session.get("user_id"), sum, currency, rate, uah, date.strftime("%Y-%m-%d"))
-            flash("The transaction is successfully submited")
+            flash("Ваша транзакція успішно додана в базу")
             return redirect("/transactions")
 
         else:
             #if some required data aren't present
-            flash('Please fill up the form')
+            flash('Будь ласка заповніть всі поля у формі')
             return render_template("index.html")
 
 @app.route("/login", methods=["GET", "POST"])
@@ -117,12 +117,12 @@ def login():
 
         # Ensure username was submitted
         if not request.form.get("name"):
-            flash('Must provide a username')
+            flash("Будь-ласка введіть ім'я користувача")
             return render_template("login.html"), 400
 
         # Ensure password was submitted
         elif not request.form.get("password"):
-            flash('Must provide a password')
+            flash('Будь ласка введіть пароль')
             return render_template("login.html"), 400
 
         # Query database for username
@@ -130,7 +130,7 @@ def login():
 
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0]["password"], request.form.get("password")):
-            flash('Invalid username and/or password')
+            flash("Неправильне ім'я/пароль")
             return render_template("login.html"), 400
 
         # Remember which user has logged in
@@ -161,13 +161,13 @@ def register():
         confirmation = request.form.get("confirmation")
         #check if the password mathes confirmation
         if not password or not confirmation or password != confirmation:
-            flash('Passwords do not match')
+            flash('Паролі не співпадають')
             return render_template("register.html"), 400
         #hash password
         password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
         #insert new user to the table
         db.execute("INSERT INTO users (name, password) VALUES (?, ?)", name, password)
-        flash("Now log in with your new credentials")
+        flash("Аккаунт успішно зареєстровано")
         return redirect("/")
 
 #allows user to logout from the session
@@ -206,7 +206,7 @@ def change_password():
         cup = cup[0]["password"]
         #check if entered old password mathes the current password
         if not check_password_hash(cup, op):
-            flash("Wrong current password")
+            flash("Неправильний чинний пароль")
             return redirect("/changepassword")
         else:
 
@@ -215,10 +215,10 @@ def change_password():
                 np = generate_password_hash(np, method='pbkdf2:sha256', salt_length=8)
                 #update table
                 db.execute("UPDATE users SET password=? WHERE id=?", np, session.get("user_id"))
-                flash("Password successfully updated")
+                flash("Пароль успішно оновлено")
                 return redirect("/changepassword")
             else:
-                flash('Passwords do not match')
+                flash('Паролі не співпадають')
                 return redirect("/changepassword")
 @app.route("/report", methods=["GET", "POST"])
 @login_required
@@ -263,11 +263,11 @@ def report():
             net = round(uah - tax - usc, 2)
             start = request.form.get("start")
             finish=request.form.get("finish")
-            a = f"The report for date period {start} - {finish} is generated"
+            a = f"Звіт за період з {start} по {finish} сформовано"
             flash(a)
             return render_template("report.html", uah=uah, tax=tax, usc=usc, net=net)
         else:
-            flash("There is no records for this period")
+            flash("За цей період інформація відсутня")
             return redirect("/report")
 
 @app.route("/ref")
