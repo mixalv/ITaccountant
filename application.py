@@ -167,6 +167,7 @@ def register():
         password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
         #insert new user to the table
         db.execute("INSERT INTO users (name, password) VALUES (?, ?)", name, password)
+        flash("Now log in with your new credentials")
         return redirect("/")
 
 #allows user to logout from the session
