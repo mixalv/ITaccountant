@@ -230,6 +230,7 @@ def report():
         id = session.get("user_id")
         #selec the transactions sum
         uah = db.execute("SELECT SUM(uah) as sum FROM transactions WHERE user_id = ? AND date BETWEEN ? AND ?", id, start, finish)
+        print(uah)
         #check if there are transactions
         if len(uah) > 0 and uah[0]["SUM"] != None:
             #count the sum
