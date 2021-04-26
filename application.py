@@ -240,7 +240,7 @@ def report():
             #count the sum
             uah = round(float(uah[0]["sum"]), 2)
             #count tax
-            tax = round(uah*0.05)
+            tax = round(uah*0.05, 2)
             #formate string to data object
             start = datetime.strptime(request.form.get("start"), "%Y-%m-%d")
             finish = datetime.strptime(request.form.get("finish"), "%Y-%m-%d")
