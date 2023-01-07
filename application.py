@@ -30,7 +30,7 @@ def after_request(response):
     return response
 
 # Configure CS50 Library to use SQLite database
-db = SQL(os.getenv("DATABASE_URL"))
+db = SQL('postgresql://postgres@127.0.0.1:5432/itacc')
 
 # Login required decorator
 def login_required(f):
@@ -50,12 +50,12 @@ def login_required(f):
 @app.context_processor
 def get_username():
     a = session.get("user_id")
-    name = db.execute("SELECT name FROM users WHERE id=?", a)
-    if len(name) == 1:
-        name = name[0]["name"]
-        return dict(name=name)
-    else:
+    if a is None:
         return dict(name='')
+    name = db.execute("SELECT name FROM users WHERE id=?", a)
+    name = name[0]["name"]
+    return dict(name=name)
+
 
 
 # Connect with bank api
